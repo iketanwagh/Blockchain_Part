@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <title>Generate Form</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #333;
+    overflow: hidden;
+}
+
+.main-container {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    backdrop-filter: blur(15px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.main-container > h3 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: color 0.3s ease;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+form > input,
+form > textarea {
+    margin: 10px 0;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+form > input:focus,
+form > textarea:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+    transform: scale(1.02);
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e0c3fc;
+    text-decoration: underline;
+}
+
+footer {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+</style>
+
+
+
+<body>
+    <div class="main-container">
+        <h3>Enter the details</h3>
+        <form method="POST" action="{{ url_for('generate_pdf') }}">
+            <input type="text" name="Name" placeholder="Name" required>
+            <input type="email" name="E-Mail" placeholder="Email" required>
+            <input type="tel" id="mobNum" name="Mobile Number" placeholder="Phone" required>
+            <div class="address-container">
+                <input type="text" name="Address Line 1" placeholder="Address Line 1" required>
+                <input type="text" name="Address Line 2" placeholder="Address Line 2">
+                <input type="text" name="City" placeholder="City" required>
+                <input type="text" name="State" placeholder="State" required>
+                <input type="tel" id="pinCode" name="Pincode" placeholder="Pincode" required>
+            </div>
+            <input type="text" name="Nearest Police Station" placeholder="Nearest Police Station" required>
+            <input type="tel" id="aadharNum" name="Aadhar Number" placeholder="Aadhar Number" required>
+            <input type="text" name="Type of Crime" placeholder="Type of Crime" required autocomplete="off">
+            <textarea name="Description" placeholder="Description" rows=10 cols=40>
+    
+            </textarea>
+            <button type="submit">Generate PDF</button>
+        </form>
+        <a href="index.html">Home</a>
+    </div>
+
+    <script>
+        const pinCode = document.getElementById('pinCode');
+        pinCode.addEventListener('input', (e) => {
+            if (pinCode.value.length > 6) {
+                pinCode.value = pinCode.value.slice(0, 6);
+            }
+        })
+
+        const aadharNum = document.getElementById('aadharNum');
+        aadharNum.addEventListener('input', (e) => {
+            if (aadharNum.value.length > 12) {
+                aadharNum.value = aadharNum.value.slice(0, 12);
+            }
+        })
+
+        const mobNum = document.getElementById('mobNum');
+        mobNum.addEventListener('input', (e) => {
+            if (mobNum.value.length > 10) {
+                mobNum.value = mobNum.value.slice(0, 10);
+            }
+        })
+    </script>
+
+
+</body>
+</html>

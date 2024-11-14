@@ -1,0 +1,200 @@
+{% extends "base.html" %} {% block content %}
+<style type="text/css">
+  /* Importing Google Font */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+  
+  /* General Styling */
+  body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #f7f8fc, #e6e9f0);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+  }
+  
+  h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #34495e;
+      margin-bottom: 2rem;
+  }
+  
+  /* Centered Container Styling */
+  .main-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 50%;
+      min-width: 300px;
+  }
+  
+  /* Title and Subtitle */
+  .title {
+      margin-top: 9rem;
+      text-align: center;
+      line-height: 1.6rem;
+  }
+  
+  .title-text {
+      font-family: 'Roboto', sans-serif;
+      font-size: 5rem;
+      font-weight: bold;
+      color: #2c3e50;
+  }
+  
+  .subtitle-text {
+      font-size: 2.4rem;
+      color: #7f8c8d;
+  }
+  
+  .hr {
+      border-style: solid;
+      border-width: 0.1rem;
+      border-color: #bdc3c7;
+      width: 60%;
+      margin: 1.5rem auto;
+  }
+  
+  /* Post Box Styling */
+  .post_box {
+      background: linear-gradient(135deg, #f2f9ff, #e9eef5);
+      padding: 1.5rem;
+      margin-top: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .post_box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Post Box Header Styling */
+  .post_box-header {
+      display: flex;
+      align-items: center;
+      padding-bottom: 1rem;
+      font-size: 1.4rem;
+      border-bottom: 1px solid #dcdcdc;
+      margin-bottom: 1rem;
+  }
+  
+  .post_box-avatar {
+      width: 3.8rem;
+      height: 3.8rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffffff;
+      background: linear-gradient(135deg, #ff6f61, #de4b41);
+      margin-right: 1.2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .name-header {
+      font-weight: 700;
+      color: #34495e;
+      font-size: 1.6rem;
+  }
+  
+  .post_box-body {
+      font-size: 1.4rem;
+      color: #7f8c8d;
+  }
+  
+  /* Button Styling */
+  .btn {
+      font-size: 1.6rem;
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, #6a89cc, #4a69bd);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn:hover {
+      background: linear-gradient(135deg, #4a69bd, #1e3799);
+      transform: translateY(-2px);
+  }
+  
+  /* Link Styling */
+  a {
+      color: #2980b9;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+  
+  a:hover {
+      color: #3498db;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+      .main-container {
+          width: 90%;
+          padding: 1.5rem;
+      }
+  
+      .post_box {
+          padding: 1.2rem;
+          font-size: 1.2rem;
+      }
+  
+      .post_box-avatar {
+          width: 3rem;
+          height: 3rem;
+          font-size: 1.6rem;
+      }
+  }
+  </style>
+  
+
+<div class="col-sm-7 main-container">
+    <h2 class="text-center alert alert-primary">Uploaded Files</h2>
+    {% for post in request_tx %}
+    <div class="post_box">
+      <div class="post_box-header">
+        <div
+          style="
+            background: rgb(219, 52, 52) none repeat scroll 0% 0%;
+            box-shadow: rgb(0, 4, 6) 0 0 0 0.2rem;
+          "
+          class="post_box-avatar"
+        >
+          {{post.user[0]}}
+        </div>
+        <div class="name-header">{{post.user}}</div>
+      </div>
+      <div>
+        <div class="post_box-body">
+          <p>
+            {{post.v_file}}&#x2192<a href="{{url_for('download_file',variable = post.v_file)}}"
+              >Download</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  
+
+{% endblock %}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap  -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> -->
+
+    <title>Blockchain Based FIR System</title>
+</head>
+
+<!-- <style>
+body{
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    font-family: 'Inter', sans-serif;
+    animation: background-animate 1s linear infinite;
+    align-items: center;
+    align-content: center;
+}
+
+
+.central-container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    align-content: center;
+}
+
+.central-container h2{
+    font-size: 3rem;
+    color: #001868;
+    text-align: center;
+    /* margin-bottom: 2rem; */
+    animation: text-animate 1s linear infinite;
+    align-items: center;
+}
+
+@keyframes text-animate{
+    
+    /* An animation script to make the heading text to slide up */
+
+    0%{
+        transform: translateY(-10px);
+        
+    }
+    50%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(-10px);
+    }
+
+
+}
+
+
+.central-container>p{
+    color:#1a00ae;
+    text-align: center;
+    align-items: center;
+}
+
+.started-button{
+    
+    padding: 8px;
+    outline:none;
+    border-radius:10px;
+    border:1px solid black;
+    background:transparent;
+    transition: 0.2s;
+    text-align: center;
+    align-items: center;
+
+}
+.started-button:hover{
+    cursor:pointer;
+    background-color: #fff;
+}
+
+footer{
+      position: absolute;
+      bottom:5%;
+      left: 50%;
+      transform:translate(-50%);
+    }
+</style>
+<body>
+
+    <div class="central-container">
+        <h2>Blockchain Based FIR System</h2>
+        <p>a secure portal to lodge FIR's without third-party invention</p>
+        <a href="/home" ><button class="started-button">Get Started</button></a>
+    </div>
+
+    
+</body> -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    
+    body {
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        animation: background-animate 10s ease-in-out infinite alternate;
+    }
+    
+    @keyframes background-animate {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+    }
+    
+    .central-container {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    .central-container h2 {
+        font-size: 3rem;
+        color: #001868;
+        margin-bottom: 1rem;
+        animation: text-bounce 2s infinite ease-in-out;
+        letter-spacing: 1.5px;
+    }
+    
+    @keyframes text-bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    
+    .central-container p {
+        font-size: 1.2rem;
+        color: #1a00ae;
+        margin-bottom: 2rem;
+        font-weight: 500;
+    }
+    
+    .started-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #001868;
+        background-color: transparent;
+        border: 2px solid #001868;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .started-button:hover {
+        background-color: #001868;
+        color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+    }
+    
+    footer {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #1a00ae;
+        font-size: 0.9rem;
+    }
+    </style>
+    
+    <body>
+        <div class="central-container">
+            <h2>Blockchain-Based FIR System</h2>
+            <p>A secure portal to lodge FIRs without third-party intervention</p>
+            <a href="/home"><button class="started-button">Get Started</button></a>
+        </div>
+    </body>
+    
+</html>
